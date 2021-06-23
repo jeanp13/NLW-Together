@@ -19,14 +19,14 @@ export function CategorySelect({ categorySelected }: Props) {
     contentContainerStyle={{ paddingRight: 40}}
    >
      {
-       categories.map(category => {
+       categories.map(category => (
          <Category
           key={category.id}
           title={category.title}
           icon={category.icon}
           checked={category.id === categorySelected}
          />
-       })
+       ))
      }
   </ScrollView>
   );
