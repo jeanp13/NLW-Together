@@ -28,12 +28,11 @@ export function Category({
      colors={[secondary80, secondary100]}
     >
      <View style={[styles.content, { opacity: checked ? 1 : 0.4}]}>
-      <View style={checked ? styles.checked : styles.check}>
-        <Icon
-          width={48}
-          height={48}
-        />
-      </View>
+      <View style={checked ? styles.checked : styles.check} />
+      <Icon
+        width={48}
+        height={48}
+      />
       <Text
         style={styles.title}
       >
