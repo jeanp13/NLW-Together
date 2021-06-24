@@ -6,12 +6,16 @@ import { CategorySelect } from '../../components/CategorySelect';
 import { ListHeader } from '../../components/ListHeader';
 import { Appointment } from '../../components/Appointment';
 import { ListDivider } from '../../components/ListDivider';
+import Background from '../../components/Background';
 
 import { Profile } from '../../components/Profile';
 import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 export function Home(){
   const [category, setCategory] = useState('');
+
+  const navigation = useNavigation();
 
   const appintments = [
     {
@@ -44,8 +48,12 @@ export function Home(){
     categoryId === category ? setCategory('') : setCategory(categoryId);
   }
 
+  function handleAppointmentsDetails() {
+    navigation.navigate('AppointmentsDetails');
+  }
+
   return (
-    <View>
+    <Background>
       <View style={styles.header}>
         <Profile />
         <ButtonAdd />
@@ -64,7 +72,10 @@ export function Home(){
             data={appintments}
             keyExtractor={item => item.id}
             renderItem={({item}) => (
-              <Appointment data={item} />
+              <Appointment
+                data={item}
+                onPress={handleAppointmentsDetails}
+              />
             )}
             style={styles.matches}
             showsVerticalScrollIndicator={false}
@@ -73,6 +84,6 @@ export function Home(){
 
         </View>
       </View>
-    </View>
+    </Background>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import IllustrationImg from '../../assets/illustration.png';
 import {style} from  './styles';
 import { useNavigation } from '@react-navigation/native';
+import Background from '../../components/Background';
 
 export function SignIn (){
   const navigation = useNavigation();
@@ -14,11 +14,12 @@ export function SignIn (){
   }
 
   return(
+    <Background>
       <View style={style.container}>
           <Image
           source={IllustrationImg}
           style={style.image}
-        />
+          />
 
         <View style={style.content}>
           <Text style={style.title}>
@@ -33,8 +34,9 @@ export function SignIn (){
           <ButtonIcon
             title='Entrar com Discord'
             onPress={handleSingIn}
-          />
+            />
         </View>
       </View>
+    </Background>
   );
 }
